@@ -6,7 +6,7 @@
 
 
 
-int test7()//ÒÔ¶ş½øÖÆ¶ÁÈë
+int test7()//ä»¥äºŒè¿›åˆ¶è¯»å…¥
 {
 	struct S
 	{
@@ -14,7 +14,7 @@ int test7()//ÒÔ¶ş½øÖÆ¶ÁÈë
 		int age;
 		int height;
 	}s = { "sorakado",18,165 };
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "rb");
+	FILE* pf = fopen("test.txt", "rb");
 	if (pf == NULL)
 	{
 		perror("fopen");
@@ -27,7 +27,7 @@ int test7()//ÒÔ¶ş½øÖÆ¶ÁÈë
 	return 0;
 }
 
-int test6()//ÒÔ¶ş½øÖÆĞ´Èë
+int test6()//ä»¥äºŒè¿›åˆ¶å†™å…¥
 {
 	struct S
 	{
@@ -35,7 +35,7 @@ int test6()//ÒÔ¶ş½øÖÆĞ´Èë
 		int age;
 		int height;
 	}s = { "sorakado",18,165};
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "wb");
+	FILE* pf = fopen("test.txt", "wb");
 	if (pf == NULL)
 	{
 		perror("fopen");
@@ -48,7 +48,7 @@ int test6()//ÒÔ¶ş½øÖÆĞ´Èë
 }
 
 
-int test5()//¸ñÊ½»¯ÊäÈëº¯Êı
+int test5()//æ ¼å¼åŒ–è¾“å…¥å‡½æ•°
 {
 	struct S
 	{
@@ -57,14 +57,14 @@ int test5()//¸ñÊ½»¯ÊäÈëº¯Êı
 		int height;
 	}s = { 0 };
 
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "r");
+	FILE* pf = fopen("test.txt", "r");
 	if (pf == NULL)
 	{
 		perror("fopen");
 		return 1;
 	}
 
-	fscanf(pf, "%s %d %d\n", s.name, &(s.age), &(s.height));//¶ÁÈ¡Êı¾İ
+	fscanf(pf, "%s %d %d\n", s.name, &(s.age), &(s.height));//è¯»å–æ•°æ®
 	//printf("%s %d %d\n", s.name, s.age, s.height);
 	fprintf(stdout, "%s %d %d\n", s.name,s.age, s.height);
 
@@ -74,7 +74,7 @@ int test5()//¸ñÊ½»¯ÊäÈëº¯Êı
 }
 
 
-int test4()//¸ñÊ½»¯Êä³öº¯Êı
+int test4()//æ ¼å¼åŒ–è¾“å‡ºå‡½æ•°
 {
 	struct S
 	{
@@ -83,7 +83,7 @@ int test4()//¸ñÊ½»¯Êä³öº¯Êı
 		int height;
 	}s = {"sorakado",18,165};
 	
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "w");
+	FILE* pf = fopen("test.txt", "w");
 	if (pf == NULL)
 	{
 		perror("fopen");
@@ -99,70 +99,70 @@ int test4()//¸ñÊ½»¯Êä³öº¯Êı
 
 
 
-int test3()//¶ÁÒ»ĞĞÊı¾İ
+int test3()//è¯»ä¸€è¡Œæ•°æ®
 {
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "r");
+	FILE* pf = fopen("test.txt", "r");
 	if (pf == NULL)
 	{
 		//printf("%s\n", strerror(errno));
 		perror("fopen");
 		return 1;
 	}
-	//¶ÁÊı¾İ
+	//è¯»æ•°æ®
 	char str[20] = { 0 };
 	fgets(str, 20, pf);
 	printf(str);
 
 
 
-	//¹Ø±ÕÎÄ¼ş
+	//å…³é—­æ–‡ä»¶
 	fclose(pf);
 	pf = NULL;
 	return 0;
 }
 
-int test2()//Ğ´Ò»ĞĞÊı¾İ
+int test2()//å†™ä¸€è¡Œæ•°æ®
 {
-	FILE* pf=fopen("C:\\Users\\•ró\\Desktop\\test.txt", "w");
+	FILE* pf=fopen("test.txt", "w");
 	if (pf == NULL)
 	{
 		printf("%s\n", strerror(errno));
 		return 1;
 	}
-	//Ğ´Êı¾İ
+	//å†™æ•°æ®
 	fputs("Hello World\n", pf);
 	fputs("Hello World\n", pf);
 
 
 
-	//¹Ø±ÕÎÄ¼ş
+	//å…³é—­æ–‡ä»¶
 	fclose(pf);
 	pf = NULL;
 	return 0;
 }
 
-int test1()//´ò¿ªÎÄ¼ş¡¢¶ÁĞ´×Ö·û
+int test1()//æ‰“å¼€æ–‡ä»¶ã€è¯»å†™å­—ç¬¦
 {
-	FILE* pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "w");
+	FILE* pf = fopen("test.txt", "w");
 	//FILE* pf = fopen("test.txt", "r");
 	if (pf == NULL)
 	{
 		printf("%s\n", strerror(errno));
 		return 1;
 	}
-	//¡­¡­¡­¡­¡¢
-	//Ğ´ÎÄ¼ş
+	//â€¦â€¦â€¦â€¦ã€
+	//å†™æ–‡ä»¶
 	char i = 'a';
 	for (i = 'a'; i <= 'z'; i++)
 		fputc(i, pf);
 	fclose(pf);
 	pf = NULL;
-	//¶ÁÎÄ¼ş
-	pf = fopen("C:\\Users\\•ró\\Desktop\\test.txt", "r");
+	//è¯»æ–‡ä»¶
+	pf = fopen("test.txt", "r");
 	int ch = 0;
 	while ((ch = fgetc(pf)) != EOF)
 		printf("%c", ch);
-	//¹Ø±ÕÎÄ¼ş
+	//å…³é—­æ–‡ä»¶
 	fclose(pf);
 	pf = NULL;
 	return 0;
