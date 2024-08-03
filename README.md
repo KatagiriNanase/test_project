@@ -4,7 +4,7 @@
 ### 1.README PLS!
 <div style="font-size:17px">
 
-&ensp;时隔数月，也是终于入门了markdown，终于能让自己的仓库的md更加体面一点了。当然markdown有了html的力量之后更是锦上添花了~   
+&ensp; 时隔数月，也是终于入门了markdown，终于能让自己的仓库的md更加体面一点了。当然markdown有了html的力量之后更是锦上添花了~   
 &ensp; 在C语言学习的告一段落之后，也是成功用上vscode啦~ ~~在我以前幼稚的思想里，从visual studio向vscode是走向成熟的标志~~vscode 的颜值真的帅爆啦！然后也是自定义了一张背景图片，雨天暗色的k—on、github主题的、光标滑动的smooth、Jetbrains的字体……每次用vscode学习真的要冲爆了！太舒服了！！
 &ensp; 扯回来，那么为什么学了md呢？当然还是需求的问题了……docx越用越难受，感觉知识点都没有进行很好的排版……（当然是我自己的原因）。于是在进行Mys的学习中，我入门了md和html，发觉md这种记笔记的方式才真真正正的吸引了我，随心所欲的自由感，不会束缚在word的图形化界面的感觉确实很舒服！vscode的无限拓展能力也让我爽！
 
