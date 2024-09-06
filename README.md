@@ -37,3 +37,7 @@
     7.git chekout HEAD test.c   从最新一次的提交中，把test.c复制到工作区中   
     
     8.  ssh-keygen -t rsa -C "youxiang@qq.com"          //引号内为自己注册github的邮箱  */
+
+### 3.git and vscode
+学习了vscode和git的使用方法，这下可以更好的维护自己的仓库了。嗯还蛮有成就感的< (￣︶￣)>
+                                            
