@@ -39,5 +39,6 @@
     8.  ssh-keygen -t rsa -C "youxiang@qq.com"          //引号内为自己注册github的邮箱  */
 
 ### 3.git and vscode
-学习了vscode和git的使用方法，这下可以更好的维护自己的仓库了。嗯还蛮有成就感的< (￣︶￣)>
+学习了vscode和git的使用方法，这下可以更好的维护自己的仓库了。嗯还蛮有成就感的< (￣︶￣)>   
+2024年9月6日
                                             
