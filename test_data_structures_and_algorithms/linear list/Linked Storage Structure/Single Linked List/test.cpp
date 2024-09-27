@@ -10,9 +10,9 @@ typedef struct stu
     stu* next;
 }*pstu;
 
-int main()
+int test1()
 {
-    pstu q,p2,p1 = new stu;
+    pstu q, p2, p1 = new stu;
     p1->name = "sorakado";
     p1->num = 33;
     p1->next = NULL;
@@ -33,5 +33,11 @@ int main()
     else
         cout << "not null!" << endl;
     system("pause");
+}
+
+
+int main()
+{
+    test1();
     return 0;
 }//main

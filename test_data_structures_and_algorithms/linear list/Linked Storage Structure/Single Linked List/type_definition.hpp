@@ -36,7 +36,7 @@ int ClearList(Linklist& L);
 int Getlength(Linklist& L);
 
 //获取指定下标数据
-int GetElem(Linklist L, int i, ElemType e);
+int GetElem_s(Linklist L, int i, ElemType e);
 
 //按值查找--返回地址
 Lnode* LocateElem_pointer(Linklist L, ElemType e);
@@ -55,4 +55,11 @@ void CreateList_Head(Linklist& L, int n);
 
 //创建链表--尾插法
 void CreateList_Rear(Linklist& L, int n);
+
+//应用--线性表的合并
+void UnionList(Linklist& La, Linklist& Lb);
+
+//应用--有序表的合并--链式存储
+
+
 #endif

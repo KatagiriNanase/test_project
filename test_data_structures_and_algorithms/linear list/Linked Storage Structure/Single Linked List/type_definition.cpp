@@ -156,7 +156,7 @@ void CreateList_Head(Linklist& L, int n)
 
 void CreateList_Rear(Linklist& L, int n)
 {
-    Linklist r,L = new Lnode;
+    Linklist r, L = new Lnode;
     L->next = NULL;
     r = L;
     for (int i = 0;i < n;i++)
@@ -168,4 +168,17 @@ void CreateList_Rear(Linklist& L, int n)
         r = p;
     }
 }//CreateList_Rear
+
+void UnionList(Linklist& La, Linklist& Lb)
+{
+    int La_len = Getlength(La);
+    int Lb_len = Getlength(Lb);
+    ElemType e;
+    for (int i = 1;i <= Lb_len;i++)
+    {
+        GetElem_s(Lb, i, e);
+        if (!LocateElem_subscribe(La, e))//判断La中有无Lb的元素
+            InsertElem(La, ++La_len, e);
+    }
+}//UnionList
 
