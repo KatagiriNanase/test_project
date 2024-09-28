@@ -11,6 +11,7 @@
 #define ERROR 0
 #define INFEASIBLE -1
 #define OVERFLOW -2
+
 typedef char Status; // 定义函数的返回值
 typedef int ElemType;
 
@@ -30,6 +31,6 @@ int InsertElem(DuLinklist& L, int i, ElemType e);
 DuLinklist LocateElem_pointer(DuLinklist& L, int i);
 
 //删除元素
-int DeleteElem(DuLinklist& L, int i,ElemType &e);
+int DeleteElem(DuLinklist& L, int i, ElemType& e);
 
 #endif

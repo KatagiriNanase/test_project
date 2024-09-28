@@ -2,7 +2,7 @@
 #define __TYPE__
 #include <stdlib.h>
 #include <string.h>
-#include <errno.h>
+//#include <errno.h>
 #include<iostream>
 #define _INIT_SIZE 100
 #define TRUE 1
@@ -11,15 +11,18 @@
 #define ERROR 0
 #define INFEASIBLE -1
 #define OVERFLOW -2
+
 typedef char Status; // 定义函数的返回值
-typedef int ElemType;
+    #ifndef __ELEMTYPE__
+    #define __ELEMTYPE__
+    typedef int ElemType;
 
-typedef struct Lnode
-{
-    ElemType data;
-    struct Lnode* next;
-} Lnode, * Linklist;
-
+    typedef struct Lnode
+    {
+        ElemType data;
+        struct Lnode* next;
+    } Lnode, * Linklist;
+    #endif
 // 初始化链表
 int InitList_L(Linklist& L);
 
@@ -60,6 +63,6 @@ void CreateList_Rear(Linklist& L, int n);
 void UnionList(Linklist& La, Linklist& Lb);
 
 //应用--有序表的合并--链式存储
-
+void MergeLinklist(Linklist La, Linklist Lb, Linklist& Lc);
 
 #endif

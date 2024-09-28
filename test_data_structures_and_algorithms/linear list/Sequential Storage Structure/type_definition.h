@@ -48,5 +48,8 @@ int LocateElem(Sqlist *L, ElemType e);
 int InsertList(Sqlist *L, int i, ElemType e);
 
 // 删除元素
-int DeleteList(Sqlist *, int);
+int DeleteList(Sqlist*, int);
+
+//应用--合并顺序表--顺序结构
+void MergeSqlist(Sqlist* Sqa, Sqlist* Sqb, Sqlist* Sqc);
 #endif

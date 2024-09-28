@@ -1,6 +1,5 @@
 #include "type_definition.hpp"
 
-
 int InitList_L(Linklist& L)
 {
     L = new Lnode;
@@ -14,7 +13,7 @@ int IsEmpty(Linklist& L)
         return 1;
     else
         return 0;
-}//IsEmpty
+}//IsEmpt
 
 int DestroyList(Linklist& L)
 {
@@ -182,3 +181,26 @@ void UnionList(Linklist& La, Linklist& Lb)
     }
 }//UnionList
 
+void MergeLinklist(Linklist La, Linklist Lb, Linklist& Lc)
+{
+    Lc = La;//用La的头结点作为新链表的头结点
+    Lnode* pa = La->next, * pb = Lb->next, * pc = Lc;
+    while (pa && pb)//pa pb内不为空
+    {
+        if (pa->data <= pb->data)//数据小的接到头指针的后面
+        {
+            pc->next = pa;
+            pa = pa->next;
+        }
+        else
+        {
+            pc->next = pb;
+            pb = pb->next;
+        }
+        pc = pc->next;//让pc指向Lc链表的最后一个节点
+    }
+
+    pc->next = (pa ? pa : pb);//让pc接上不为NULL的那个指针
+    delete Lb;//释放Lb的头结点
+
+}
