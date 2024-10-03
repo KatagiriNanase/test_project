@@ -21,6 +21,18 @@ typedef struct
 
 }SqQueue;//顺序队列
 
+//初始化顺序循环队
+int InitQueue(SqQueue& Q);
 
+//获取长度
+int GetLenth(SqQueue Q);
 
+//入队
+int EnQueue(SqQueue& Q, QElemType E);
+
+//出队
+int DeQueue(SqQueue& Q, QElemType& E);
+
+//取对头元素
+QElemType GetHead(SqQueue Q);
 #endif
