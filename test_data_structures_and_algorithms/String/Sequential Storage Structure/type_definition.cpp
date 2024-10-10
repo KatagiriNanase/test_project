@@ -31,6 +31,7 @@
 //     return -1;
 // }
 
+
 int IndexStringBF(SString S, SString T, int pos)
 {
     int i = pos, j = 1;
@@ -53,6 +54,13 @@ int IndexStringBF(SString S, SString T, int pos)
 void GetNext(SString T, int(&next)[])
 {
     int i = 1;next[1] = 0;int j = 0;
+    while (i < T.length)
+    {
+        if (j == 0 || T.ch[i] == T.ch[j])
+            next[++i] = ++j;
+        else
+            j = next[j];//利用已知的next数组进行寻找
+    }
 }
 
 int IndexStringKMP(SString S, SString T, int pos)
@@ -61,7 +69,7 @@ int IndexStringKMP(SString S, SString T, int pos)
     GetNext(T, next);
     while (i <= S.length && j <= T.length)
     {
-        if (S.ch[i] = T.ch[i])
+        if (S.ch[i] = T.ch[i] || j == 0)
             i++, j++;
         else
             j = next[j];//只有j需要回溯
@@ -71,5 +79,5 @@ int IndexStringKMP(SString S, SString T, int pos)
     if (j > T.length)//j走到底了，匹配上了
         return i - T.length;
 }
-
+//好难啊…… 先与自己和解了:D
 

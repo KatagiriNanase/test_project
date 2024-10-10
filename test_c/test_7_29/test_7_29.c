@@ -13,7 +13,7 @@ __DATE__,__TIME__)
 #define MALLOC(ELEMENT,TYPE) (TYPE*)malloc((ELEMENT)*sizeof(TYPE))
 void test1()
 {
-	
+
 	DEBUG_PRINT;
 	int a = SQURE(3 + 1);
 	//printf("%d ", a);
@@ -30,14 +30,14 @@ void test2()
 }
 void test3()
 {
-	printf("%d\n",MAX(1 + 2, 45)); 
+	printf("%d\n", MAX(1 + 2, 45));
 }
 void test4()//试一下变长数组
 {
 	int input = 0;
 	while (scanf("%d", &input))
 	{
-		int* parr = MALLOC(input, int);
+		int* parr = MALLOC(input, int);//就是C++中的new
 		int i = 0;
 		for (i; i < input; i++)
 		{
@@ -48,8 +48,8 @@ void test4()//试一下变长数组
 			printf("%d ", parr[i]);
 		}
 	};
-	
-	
+
+
 
 }
 void test5()
@@ -81,21 +81,21 @@ void test6()//条件编译
 void test7()//多分支条件编译
 {
 #ifdef __DEBUG__
-	#define M 5
-	#if M>5
-		printf("hello world\n");
-	#elif M==5
-		printf("be happy every day!\n");
-	#else
-		printf("smile to the fucking life!\n");
-	#endif
+#define M 5
+#if M>5
+	printf("hello world\n");
+#elif M==5
+	printf("be happy every day!\n");
+#else
+	printf("smile to the fucking life!\n");
+#endif
 #endif//__DEBUG__
 }
 
 
 void test8()//判断是否被定义
 {
-//#define M 10
+	//#define M 10
 #if defined(M)
 	printf("%d \n", M);
 #endif //defined(M)
@@ -122,20 +122,20 @@ void test9()//模拟实现offsetof
 		char c;
 	}S;
 	S s = { "a",2 };
-//#define OFFSETOF(STRCUT,NUM) ((size_t)((char*p2=STRCUT s.NUM)-(char*p1=(STRCUT s))))
+	//#define OFFSETOF(STRCUT,NUM) ((size_t)((char*p2=STRCUT s.NUM)-(char*p1=(STRCUT s))))
 #define OFFSETOF(STRCUT,NUM) (size_t)(&(((STRCUT*)0)->NUM))
 	/*printf("%d ", offsetof(S, a));
 	printf("%d ", offsetof(S, b));
 	printf("%d ", offsetof(S, c));*/
-	printf("%u ",OFFSETOF(S, a));
+	printf("%u ", OFFSETOF(S, a));
 	printf("%u ", OFFSETOF(S, b));
 	printf("%u ", OFFSETOF(S, c));
-	
+
 
 }
 int main()
 {
-	
+
 	test9();
 	return 0;
 }
