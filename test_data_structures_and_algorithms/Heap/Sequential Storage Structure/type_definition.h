@@ -10,6 +10,13 @@ typedef struct Heap
     int size;//数组大小
     int capacity;//容量
 }Heap;
+void Swap(HPDataType* p1, HPDataType* p2);//交换数据
+
+//向下调整法--前提：左右子树都是小堆
+void AdjustDownMin(HPDataType* a, int n, int root);
+
+//向下调整法--前提：左右子树都是大堆
+void AdjustDownMax(HPDataType* a, int  n, int root);
 
 //初始化堆
 void HeapInit(Heap* php, HPDataType* e, int n);
