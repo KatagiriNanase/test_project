@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 //构建堆
 typedef int HPDataType;
 typedef struct Heap
@@ -24,6 +25,9 @@ void HeapInit(Heap* php, HPDataType* e, int n);
 //销毁堆
 void HeapDestory(Heap* php);
 
+//向上调整
+void AdjustUp(HPDataType* a, int size, int child);
+
 //压入元素
 void HeapPush(Heap* php, HPDataType e);
 
@@ -31,6 +35,6 @@ void HeapPush(Heap* php, HPDataType e);
 void HeapPop(Heap* php);
 
 //Top k元素
-HPDataType Heaptop(Heap* php);
+HPDataType* Heaptop(Heap* php,int k);
 
 

@@ -40,7 +40,8 @@ void HeapSortAsc(HPDataType* a, int n)//升序用大堆
 int main()
 {
     HPDataTypeArr a = { 27,15,19,18,28,34,65,49,25,37 };
-    HeapSortAsc(a, sizeof(a) / sizeof(a[0]));
+    Heap php = { a,sizeof(a) / sizeof(a[0]),sizeof(a) / sizeof(a[0]) };
+    HPDataType* ret_arr=Heaptop(&php, 5);
     return 0;
 
 } 
