@@ -86,6 +86,47 @@ BTNode* CreateBTnode(BTDataType x)
     bnode->left = bnode->right = NULL;
     return bnode;
 }
+
+//二叉树第k层节点个数
+int BiTreeLevelKSize(BTNode* root,BTDataType k)
+{
+    if (!root)
+        return 0;
+
+    if (k == 1)
+        return 1;
+
+    return BiTreeLevelKSize(root->left, k - 1) + BiTreeLevelKSize(root->right, k - 1);
+}
+
+//二叉树查找值为x的节点
+BTNode* BiTreeFind(BTNode* root,BTDataType x)
+{
+    if (!root)
+        return NULL;
+
+    if (root->data == x)
+        return root;
+    
+    BTNode* left = BiTreeFind(root->left, x);
+    if (left)
+        return left;
+    BTNode* right = BiTreeFind(root->right,x);
+    if (right)
+        return  right;
+}
+//销毁二叉树
+void DestroyBiTree(BTNode* root)
+{
+    if (!root)
+        return NULL;
+
+    DestroyBiTree(root->left);
+    DestroyBiTree(root->right);
+
+    free(root);
+    root = NULL;
+}
 int main()
 {
     BTNode* A = CreateBTnode('A');
@@ -100,7 +141,8 @@ int main()
     // printf("%d\n", BiTreeSize(A));
     // printf("%d\n", BiTreeSize(B));
     // printf("%d\n", TreeLeafSize(B));
-    printf("%d ", BiTreeDepth(B));
-
+    //printf("%d ", BiTreeDepth(B));
+    BTNode* root=BiTreeFind(A,'B');
+    printf("%c ",root->data);
     return 0;
 }
