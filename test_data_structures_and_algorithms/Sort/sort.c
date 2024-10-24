@@ -102,17 +102,17 @@ void SelectSort(int* a, int n)
 }
 
 // 堆排序
-//向下调整--小堆
+//向下调整--大堆
 void AdjustDown(int* a, int n, int root)
 {
     int parent = root;
     int child = 2 * root + 1;
-    while (child <= n)
+    while (child < n)
     {
-        if (a[child + 1] && a[child + 1] < a[child])
+        if (child + 1 < n && a[child + 1] > a[child])
             ++child;
 
-        if (a[parent] < a[child])
+        if (a[child] > a[parent])
         {
             Swap(&a[parent], &a[child]);
             parent = child;
@@ -139,3 +139,24 @@ void HeapSort(int* a, int n)
     }
 }
 
+void BubbleSort(int* a, int n)
+{
+    int end = n - 1;
+
+    while (end >= 1)
+    {
+        int exchange = 0;
+        for (int j = 0;j <= end - 1;j++)
+        {
+            if (a[j] > a[j + 1])
+            {
+                Swap(&a[j], &a[j + 1]);
+                exchange = 1;
+            }
+        }
+
+        if (!exchange)//如果进循环后发现没有进行交换，说明已经是有序的了
+            break;
+        --end;
+    }
+}

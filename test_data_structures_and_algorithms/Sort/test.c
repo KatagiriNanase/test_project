@@ -36,6 +36,16 @@ void TestHeapSort()
     PrintArray(a, sizeof(a) / sizeof(a[0]));
 
 }
+
+void TestBubbleSort()
+{
+    int a[] = { 20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0 };
+    PrintArray(a, sizeof(a) / sizeof(a[0]));
+    BubbleSort(a, sizeof(a) / sizeof(a[0]));
+    PrintArray(a, sizeof(a) / sizeof(a[0]));
+
+}
+
 // 测试排序的性能对比
 void TestOP()
 {
@@ -77,7 +87,7 @@ void TestOP()
 }
 int main()
 {
-    TestHeapSort();
+    TestBubbleSort();
     //system("pause");
     return 0;
 }
