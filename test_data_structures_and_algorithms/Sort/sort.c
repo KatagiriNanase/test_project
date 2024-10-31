@@ -160,3 +160,105 @@ void BubbleSort(int* a, int n)
         --end;
     }
 }
+
+//获取中间数下标
+int GetMidIndex(int* a, int begin, int mid, int end)
+{
+
+    if (a[begin] > a[mid] > a[end] || a[end] > a[mid] > a[begin])
+        return mid;
+
+    if (a[begin] > a[end] > a[mid] || a[mid] > a[end] > begin)
+        return end;
+
+    if (a[end] > a[begin] > a[mid] || a[mid] > a[begin] > a[end])
+        return begin;
+}
+
+int PartSort1(int* a, int left, int right)
+{
+    int end = right - 1, begin = left - 1;
+    int keyindex = end;//key的下标
+
+    while (begin < end)
+    {
+        //如果选最右边的值做key，那么要让左边的begin先走，这样让end去遇begin
+        //停下来的位置才是大于key的数，交换后比key大的就会到后面
+
+        while (begin < end && a[begin] < a[keyindex])
+            ++begin;
+
+        while (begin<end && a[end] > a[keyindex])
+            --end;
+
+        Swap(&a[begin], &a[end]);
+    }
+
+    Swap(&a[begin], &a[keyindex]);
+
+    return begin;
+}
+
+int PartSort2(int* a, int left, int right)
+{
+    assert(a);
+    int midindex = GetMidIndex(a, left, (left + right) / 2, right);
+    Swap(&a[right], &a[midindex]);
+
+    int keyindex = right;
+    int key = a[keyindex];//此时最右边就相当于留下一个新坑
+    int begin = left, end = right;
+
+    while (begin < end)
+    {
+        while (begin < end && a[begin] <= key)
+            ++begin;
+        a[end] = a[begin];
+
+        while (begin < end && a[end] >= key)
+            --end;
+        a[begin] = a[end];
+
+    }
+
+    a[begin] = key;
+
+    return begin;
+}
+
+int PartSort3(int* a, int left, int right)
+{
+    assert(a);
+    int midindex = GetMidIndex(a, left, (left + right) / 2, right);
+    Swap(&a[right], &a[midindex]);
+
+    int cur = left;
+    int prev = left - 1;
+    int key = a[right];
+
+    while (cur < right)
+    {
+        if (a[cur] < key && ++prev != cur)
+            Swap(&a[cur], &a[prev]);
+
+        ++cur;
+    }
+
+    Swap(&a[++prev], &a[right]);
+
+    return prev;
+}
+
+void QuickSort(int* a, int left, int right)
+{
+    assert(a);
+
+    if (left >= right)//left 和 right 相遇就说明此区间只有一个元素，不需要再排了
+        return;
+
+    int div = PartSort1(a, left, right);
+    //[left,div-1]  [div+1,right]
+
+    QuickSort(a, left, div - 1);
+    QuickSort(a, div + 1, right);
+}
