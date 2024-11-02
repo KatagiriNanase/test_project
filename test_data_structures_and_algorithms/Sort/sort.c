@@ -164,20 +164,42 @@ void BubbleSort(int* a, int n)
 //获取中间数下标
 int GetMidIndex(int* a, int begin, int mid, int end)
 {
+    if (a[begin] > a[mid])
+    {
+        if (a[mid] > a[end])
+            return mid;
 
-    if (a[begin] > a[mid] > a[end] || a[end] > a[mid] > a[begin])
-        return mid;
+        else if (a[end] > a[begin])
+            return begin;
 
-    if (a[begin] > a[end] > a[mid] || a[mid] > a[end] > begin)
-        return end;
+        else
+            return end;
+    }
 
-    if (a[end] > a[begin] > a[mid] || a[mid] > a[begin] > a[end])
-        return begin;
+    //mid>begin
+    else
+    {
+        if (a[mid] > a[end])
+            return mid;
+
+        else
+        {
+            if (a[begin] < a[end])
+                return begin;
+            else
+                return end;
+        }
+    }
 }
 
 int PartSort1(int* a, int left, int right)
 {
-    int end = right - 1, begin = left - 1;
+    assert(a);
+
+    int midindex = GetMidIndex(a, left, (left + right) / 2, right);
+    Swap(&a[midindex], &a[right]);
+
+    int end = right, begin = left;
     int keyindex = end;//key的下标
 
     while (begin < end)
@@ -253,12 +275,57 @@ void QuickSort(int* a, int left, int right)
 {
     assert(a);
 
-    if (left >= right)//left 和 right 相遇就说明此区间只有一个元素，不需要再排了
-        return;
+    if (right - left + 1 >= 10)
+    {
+        if (left >= right)//left 和 right 相遇就说明此区间只有一个元素，不需要再排了
+            return;
 
-    int div = PartSort1(a, left, right);
-    //[left,div-1]  [div+1,right]
+        int div = PartSort3(a, left, right);
+        //[left,div-1]  [div+1,right]
 
-    QuickSort(a, left, div - 1);
-    QuickSort(a, div + 1, right);
+        QuickSort(a, left, div - 1);
+        QuickSort(a, div + 1, right);
+
+    }
+
+    //当排序的数小于10就没必要递归；此时接近有序选择插入排序
+    int size = right - left + 1;
+    InsertSort(a + left, size);
+
+}
+
+void QuickSortNonR(int* a, int left, int right)
+{
+    Stack pst={0};
+    StackInit(&pst);
+
+    Stackpush(&pst, right);
+    Stackpush(&pst, left);
+
+    //栈不为空进行迭代
+    while (!StackIsEmpty(&pst))
+    {
+        //出栈
+        int begin = StackTop(&pst);
+        StackPop(&pst);
+        int end = StackTop(&pst);
+        StackPop(&pst);
+
+        int div = PartSort2(a, begin, end);
+        //入栈
+        if (div + 1 < end)
+        {
+            Stackpush(&pst, end);
+            Stackpush(&pst, div + 1);
+        }
+        if (begin < div - 1)
+        {
+            Stackpush(&pst, div - 1);
+            Stackpush(&pst, begin);
+        }
+
+    }
+
+    StackDestroy(&pst);
+
 }

@@ -3,6 +3,7 @@
 #include<assert.h>
 #include<stdlib.h>
 #include<time.h>
+#include "Stack.h"
 
 // 排序实现的接口
 
@@ -22,7 +23,7 @@ void HeapSort(int* a, int n);
 // 冒泡排序
 void BubbleSort(int* a, int n);
 // 快速排序递归实现
-// 快速排序hoare版本
+// 快速排序hoare版本(左右指针法)
 int PartSort1(int* a, int left, int right);
 // 快速排序挖坑法
 int PartSort2(int* a, int left, int right);
